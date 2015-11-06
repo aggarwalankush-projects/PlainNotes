@@ -17,9 +17,18 @@
         </activity>
 
         <provider
-            android:authorities="com.example.plainnotes.notesprovider"
             android:name=".NotesProvider"
-            android:exported="false"/>
+            android:authorities="com.example.plainnotes.notesprovider"
+            android:exported="false" />
+
+        <activity
+            android:name=".EditorActivity"
+            android:label="@string/editor_activity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.anku.plainnotes.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

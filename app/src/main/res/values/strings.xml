@@ -4,4 +4,6 @@
     <string name="delete_all">Delete all</string>
     <string name="are_you_sure">Are you sure?</string>
     <string name="all_deleted">All notes deleted</string>
+    <string name="editor_activity">Edit Note</string>
+    <string name="title_activity_main2">Main2Activity</string>
 </resources>
