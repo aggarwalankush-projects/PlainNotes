@@ -15,21 +15,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private CursorAdapter cursorAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        String[] from = {DBOpenHelper.NOTE_TEXT};
-        int[] to = {android.R.id.text1};
-        cursorAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, null, from, to, 0);
+        cursorAdapter = new NotesCursorAdaptor(this, null, 0);
         ListView listView = (ListView) findViewById(android.R.id.list);
         listView.setAdapter(cursorAdapter);
 
@@ -55,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        switch (id){
+        switch (id) {
             case R.id.action_create_sample:
                 insertSampleData();
                 break;
@@ -104,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        return new CursorLoader(this,NotesProvider.CONTENT_URI,null,null,null,null);
+        return new CursorLoader(this, NotesProvider.CONTENT_URI, null, null, null, null);
     }
 
     @Override
